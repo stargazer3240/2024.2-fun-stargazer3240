@@ -1,9 +1,8 @@
 module Nat where
 
-import Prelude hiding (Num (..), (^))
+import Prelude hiding (Num (..), pred, (^))
 
 data Nat = O | S Nat
-  deriving (Eq, Show)
 
 (+) :: Nat -> Nat -> Nat
 n + O = n
@@ -39,3 +38,18 @@ fib (S (S n)) = fib (S n) + fib n
 pred :: Nat -> Nat
 pred (S n) = n
 pred _ = error "0 doesn't have pred!"
+
+instance Show Nat where
+  show O = "0"
+  show (S n) = "S" ++ show n
+
+-- Default Show:
+-- instance Show Nat where
+--   show O = "0"
+--   show (S O) = "S 0"
+--   show (S n) = "S (" ++ show n ++ ")"
+
+instance Eq Nat where
+  (==) O O = True
+  (==) (S n) (S m) = n == m
+  (==) _ _ = False
