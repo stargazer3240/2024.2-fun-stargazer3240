@@ -21,6 +21,8 @@ fold r b (x `Cons` xs) = x `b` ((fold r b) xs)
 
 sum = fold O (+)
 prod = fold (S O) (*)
+conj = fold True band
+disj = fold False bor
 
 map :: (a -> b) -> (List a -> List b)
 map f Nill = Nill
