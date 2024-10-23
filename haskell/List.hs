@@ -2,8 +2,9 @@
 
 module List where
 
+import Bool
 import Nat
-import Prelude hiding (length, (*), (+))
+import Prelude hiding (Bool (..), filter, length, map, otherwise, prod, sum, (*), (+))
 
 data List a where
   Nill :: List a
@@ -20,3 +21,11 @@ fold r b (x `Cons` xs) = x `b` ((fold r b) xs)
 
 sum = fold O (+)
 prod = fold (S O) (*)
+
+map :: (a -> b) -> (List a -> List b)
+map f Nill = Nill
+map f (x `Cons` xs) = f x `Cons` map f xs
+
+filter :: (a -> Bool) -> (List a -> List a)
+filter p Nill = Nill
+filter p (x `Cons` xs) = ifthenelse (p x) (x `Cons` filter p xs) (filter p xs)
