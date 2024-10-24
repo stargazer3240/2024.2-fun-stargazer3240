@@ -28,7 +28,6 @@ double n = n * sso
 
 -- double using only recursion
 -- double O = O
--- double (S O) = S (S O)
 -- double (S n) = S (S (double n))
 
 fact :: Nat -> Nat
