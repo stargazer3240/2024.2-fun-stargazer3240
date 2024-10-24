@@ -26,6 +26,11 @@ ssso = S sso
 double :: Nat -> Nat
 double n = n * sso
 
+-- double using only recursion
+-- double O = O
+-- double (S O) = S (S O)
+-- double (S n) = S (S (double n))
+
 fact :: Nat -> Nat
 fact O = S O
 fact (S n) = S n * fact n
